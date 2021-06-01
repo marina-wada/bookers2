@@ -1,21 +1,4 @@
-<h1>User info</h1>
-
-<%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "/assets/no_image.jpg" %>
-
-  <h4>name<%= @user.name %></h4>
-  <h4>introduction<%= @user.introduction %></h4>
-  <%= link_to "Update User" ,edit_user_path(@user.id) %><!--Update Userhaあとでとる!-->
-
-<%= form_with model: @book, local:true do |f| %>
-  <h1>New book</h1>
-  <h4>Title</h4>
-  <%= f.text_field :book_title %>
-
-  <h4>Opinion</h4>
-  <%= f.text_area :book_opinion %><br>
-  <%= f.submit 'Create Book' %>
-
-<% end %>
+<%= render 'books/list', book: @book, user: @user %>
 
 <h1>Books</h1>
 <% @books.each do |book| %>
@@ -29,16 +12,18 @@
   </thead>
   <tbody>
     <tr>
-      <th>
-        <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, fallback: "/assets/no_image.jpg" %><br>
-
-      </th>
-      <th>
+      <td>
+        <a>
+          <%= attachment_image_tag current_user, :profile_image, format: 'jpeg', fallback: "/assets/no_image.jpg", size: "100x100" %><br>
+          <%= @user.name %>
+        </a>
+      </td>
+      <td>
         <%= link_to book_path(book.id) do %>
-          <%= book_title %>
+          <%= book.book_title %>
         <% end %>
-        </th>
-      <th><%= book.opinion %></th>
+        </td>
+      <td><%= book.book_opinion %></td>
     </tr>
   </tbody>
   <% end %>
