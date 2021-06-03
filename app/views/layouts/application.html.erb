@@ -12,8 +12,8 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="shadow-sm bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <a class="navbar-brand" href="/">
             <span>Bookers</span>
@@ -22,40 +22,37 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto p-3 ">
+
+             <li class="nav-item">
+               <%= link_to "Home", root_path, class: "text-white navbar-item fas fa-home fa-fw" %>
+             </li>
+
              <% if user_signed_in? %>
-             <li class="nav-item">
-               <a class="fas fa-home nav-link text-light"><%= link_to "Home", root_path %></a>
 
+             <li class="nav-item">
+               <%= link_to "Users", users_path, class: "text-white navbar-item fas fa-users fa-fw" %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "Users", user_path %>
+               <%= link_to "Books", books_path, class: "text-white navbar-item fas fa-book-open fa-fw" %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "Books", books_path %>
-             </li>
-
-             <li class="nav-item">
-               <%= link_to "logout", destroy_user_session_path, method: :delete %>
+               <%= link_to "logout", destroy_user_session_path, class: "text-white navbar-item fas fa-sign-in-alt fa-fw", method: :delete %>
              </li>
 
              <% else %>
              <li class="nav-item">
-               <%= link_to "Home", root_path %>
+               <%= link_to "About", homes_about_path, class: "text-white navbar-item fas fa-link fa-fw" %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "About", homes_about_path %>
+               <%= link_to "sign up", new_user_registration_path, class: "text-white nav-item fas fa-user-plus fa-fw" %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "sign up", new_user_registration_path %>
-             </li>
-
-             <li class="nav-item">
-               <%= link_to "login", new_user_session_path %>
+               <%= link_to "login", new_user_session_path, class: "text-white navbar-item fas fa-sign-in-alt fa-fw" %>
              </li>
              <% end %>
             </ul>
@@ -63,14 +60,17 @@
         </div>
       </nav>
     </header>
-
-
-
-
     <%= yield %>
   </body>
 
   <footer>
-    CopyRight Infratop.inc
+    <div class="container mt-5">
+      <div class"row">
+        <div class="mx-auto">
+          <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+
+    </div>
   </footer>
 </html>
