@@ -12,7 +12,7 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm bg-dark">
+    <header class="bg-dark">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
           <a class="navbar-brand" href="/">
@@ -22,37 +22,80 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto p-3 ">
-
-             <li class="nav-item">
-               <%= link_to "Home", root_path, class: "text-white navbar-item fas fa-home fa-fw" %>
-             </li>
+            <ul class="navbar-nav ml-auto">
 
              <% if user_signed_in? %>
-
              <li class="nav-item">
-               <%= link_to "Users", users_path, class: "text-white navbar-item fas fa-users fa-fw" %>
+               <%= link_to users_path(@user), class: "text-white" do %>
+                <div class="home">
+                 <span class="fas fa-home"></span>
+                   Home
+                 </div>
+               <% end %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "Books", books_path, class: "text-white navbar-item fas fa-book-open fa-fw" %>
+               <%= link_to users_path, class: "text-white" do %>
+                 <div class="users">
+                   <span class="fas fa-users"></span>
+                    Users
+                 </div>
+               <% end %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "logout", destroy_user_session_path, class: "text-white navbar-item fas fa-sign-in-alt fa-fw", method: :delete %>
+               <%= link_to books_path, class: "text-white" do %>
+                 <div class="books">
+                   <span class="fas fa-book-open"></span>
+                   Books
+                 </div>
+                <% end %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to destroy_user_session_path, class: "text-white", method: :delete do %>
+                 <div class="logout">
+                   <span class="fas fa-sign-in-alt"></span>
+                   Logout
+                 </div>
+               <% end %>
              </li>
 
              <% else %>
              <li class="nav-item">
-               <%= link_to "About", homes_about_path, class: "text-white navbar-item fas fa-link fa-fw" %>
+               <%= link_to root_path, class: "text-white" do %>
+                 <div class="home">
+                   <span class="fas fa-home"></span>
+                   Home
+                 </div>
+               <% end %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "sign up", new_user_registration_path, class: "text-white nav-item fas fa-user-plus fa-fw" %>
+               <%= link_to homes_about_path, class: "text-white" do %>
+                 <div class="about">
+                   <span class="fas fa-link"></span>
+                   About
+                 </div>
+               <% end %>
              </li>
 
              <li class="nav-item">
-               <%= link_to "login", new_user_session_path, class: "text-white navbar-item fas fa-sign-in-alt fa-fw" %>
+               <%= link_to new_user_registration_path, class: "text-white" do %>
+                 <div class="sign up">
+                   <span class="fas fa-user-plus"></span>
+                   sign up
+                 </div>
+               <% end %>
+             </li>
+
+             <li class="nav-item">
+               <%= link_to new_user_session_path, class: "text-white" do %>
+                 <div class="login">
+                   <span class="fas fa-sign-in-alt"></span>
+                   login
+                 </div>
+               <% end %>
              </li>
              <% end %>
             </ul>
@@ -65,7 +108,7 @@
 
   <footer>
     <div class="container mt-5">
-      <div class"row">
+      <div class="row">
         <div class="mx-auto">
           <p>CopyRight Infratop.inc</p>
         </div>
