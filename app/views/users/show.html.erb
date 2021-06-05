@@ -1,7 +1,12 @@
-<%= render 'books/list', book: @book, user: @user %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'books/list', book: @book, user: @user %>
+    </div>
 
-<h1>Books</h1>
-<% @books.each do |book| %>
+    <div class="col">
+      <h1>Books</h1>
+      <% @books.each do |book| %>
 <table>
   <thead>
     <tr>
@@ -20,11 +25,14 @@
       </td>
       <td>
         <%= link_to book_path(book.id) do %>
-          <%= book.book_title %>
+          <%= book.title %>
         <% end %>
         </td>
-      <td><%= book.book_opinion %></td>
+      <td><%= book.body %></td>
     </tr>
   </tbody>
   <% end %>
 </table>
+    </div>
+  </div>
+</div>

@@ -9,12 +9,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
-    @user = user.new(user_params)
-    @books.user_id = current_user.id
-    @book.save
-    redirect_to books_path(book.id)
-  end
+  # def create
+  #   @user = user.new(user_params)
+  #   @books.user_id = current_user.id
+  #   @book.save
+  #   redirect_to books_path(book.id)
+  # end
 
   def edit
     @user = User.find(params[:id])
