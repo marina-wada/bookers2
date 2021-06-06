@@ -6,8 +6,8 @@
 
     <div class="col">
       <h2>Books</h2>
-      <div class="table">
-        <% @books.each do |book| %>
+      <% @books.each do |book| %>
+        <div class="table">
           <thead>
             <tr>
               <th></th>
@@ -24,8 +24,9 @@
               <td><%= book.body %></td>
             </tr>
           </tbody>
-        <% end %>
-      </div>
+
+        </div>
+      <% end %>
 
     </div>
   </div>
