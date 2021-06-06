@@ -1,37 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>User info</h2>
+<%= attachment_image_tag current_user, :profile_image, format: 'jpeg', fallback: "/assets/no_image.jpg", size: "100x100" %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>name</th>
+        <th><%= user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+      </tr>
+    </tbody>
+  </table>
 
-      <%= attachment_image_tag current_user, :profile_image, format: 'jpeg', fallback: "/assets/no_image.jpg", size: "100x100" %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>name</th>
-            <th><%= user.name %></th>
-          </tr>
-          <tr>
-            <th>introduction</th>
-            <th><%= user.introduction %></th>
-          </tr>
-        </tbody>
-      </table>
-      <div class="row mt-md-5">
-        <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-sm btn-block" do %>
-          <i class="fas fa-users-cog"></i>
-        <% end %>
-      </div>
-
-      <%= form_with model: book, local:true do |f| %>
-        <h2 class="mt-md-3">New book</h2>
-        <h4>Title</h4>
-        <%= f.text_field :title %>
-
-        <h4>Opinion</h4>
-        <%= f.text_area :body %><br>
-        <%= f.submit 'Create Book', class: "btn btn-success btn-sm mt-2" %>
-
-      <% end %>
-    </div>
+  <div class="row mt-md-5">
+    <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-sm btn-block" do %>
+      <i class="fas fa-users-cog"></i>
+    <% end %>
   </div>
-</div>
+
+  <%= form_with model: book, local:true do |f| %>
+    <h2 class="mt-md-3">New book</h2>
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Opinion</h4>
+    <%= f.text_area :body %><br>
+    <%= f.submit 'Create Book', class: "btn btn-success btn-sm mt-2" %>
+  <% end %>
