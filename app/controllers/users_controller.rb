@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -10,15 +11,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # def create
-  #   @user = user.new(user_params)
-  #   @books.user_id = current_user.id
-  #   @book.save
-  #   redirect_to books_path(book.id)
-  # end
-
   def edit
     @user = User.find(params[:id])
+    redirect_to user_path(current_user) unless current_user.id == @user.id
   end
 
   def update
